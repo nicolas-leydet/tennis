@@ -45,6 +45,9 @@ class Tournament(models.Model):
     )
     men_max_nb_set = models.PositiveIntegerField()
 
+    def __str__(self):
+        return '{} - {}'.format(self.name, self.location)
+
 
 ROUND_CHOICES = Choices(
     ('ROUND_ROBIN', 'Round Robin'),
