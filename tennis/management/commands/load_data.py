@@ -1,6 +1,4 @@
-
-
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 import xlrd
 
 from tennis.models import Match, Tournament
@@ -14,7 +12,6 @@ class Command(BaseCommand):
         parser.add_argument('sheet_name')
 
     def handle(self, *args, **options):
-        import ipdb; ipdb.set_trace()
         excel_stream = excel_data_stream(options['data_file'],
                                          options['sheet_name'])
         tennis_extractor(excel_stream)
@@ -106,6 +103,7 @@ def to_int(value, default=None):
         return int(value)
     except ValueError:
         return default
+
 
 def to_float(value, default=None):
     try:
