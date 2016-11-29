@@ -10,6 +10,9 @@ python manage.py runserver
 ```
 
 You can access CRUD forms via django admin at http://127.0.0.1:8000/
+
 You can access the http api at http://127.0.0.1:8000/api/tennis/
 
-[development notes](development_notes.md)
+---
+
+[Development notes](development_notes.md)
