@@ -1,9 +1,9 @@
 # Note about normalisation
 
-NB : For a good normalising, we need a good knowledge of the domain and the different uses of the data
-Early normalisation can be counter-productive.
+NB : For a good normalising, I would need a good knowledge of the domain and the different uses of the data
 
-Obvious data split :
+
+Obvious table split :
 - Tournament
   - Location = Venue of tournament
   - Tournament = Name of tounament (including sponsor if relevant)
@@ -59,7 +59,7 @@ Obvious data split :
   - AvgW= Average odds of match winner (as shown by Oddsportal.com)
   - AvgL= Average odds of match loser (as shown by Oddsportal.com)
 
-Potential data split :
+Potential table split :
 - Player : can be interesting as it is probable that players might have information attached to them atsome point
 - Set : make things more complex without benifit. I would propose to store the set result in a json field / array fields
 - Separation of match and match's odds (1 to 1 relationship)
@@ -69,13 +69,11 @@ Possible redundancy removal :
 - Wsets = redundant with the detail of sets
 - Lsets = redundant with the detail of sets
 
-
-If we also take into account women's result, we would have to take into account the "Best of" that is different for different categories.
-By replacing "Best of" by a "men best of" and a "women best of" fields within tournement table.
+If we also take into account women's result, we would have to differentiate between their "Best of".
 
 Also, this normalisation, would potentialy need to change by looking at all the data:
-Does all the tournement's fields stable between saisons ? (e.g. a tournemnt might change the 'best of' number / surface / location ).
-In that situation, we will need to we store a different tournament and ned to decide if we want to split tournemant in 2 to keep the relationship between slightly different tournemnt
+Does all the tournement's fields stable between years ? (e.g. a tournemnt might change the 'best of' number / surface / location ).
+In that situation, we will need to we store a different tournament and need to decide if we want to split tournemant in 2 to keep the relationship between slightly different tournament
 
 For this first version, I will keep the normalisation simple by removing the redundant fields and splitting in 2 tables (tournements/matches).
 
@@ -88,6 +86,6 @@ line 1598,Wimbledon Malisse X.	vs Melzer J.: best of should be 5 not 3
 # What to do next
 * Add unit tests for the data load function
 * add system test for the api
-* Make data loading faster using bulk inserts
-* Integrate a django admin overall like Grapelli or jet
+* Make data loading faster using bulk inserts and no blocking IO
 * docker compose deployemnt
+* Integrate a django admin overall like Grapelli or jet
